@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import services.DiscountService;
 import services.strategies.DiscountStrategy;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -27,6 +28,7 @@ public class DiscountServiceImpl implements DiscountService {
         return result;
     }
 
+    @Resource(name  = "discountStrategies")
     public void setStrategies(List<DiscountStrategy> strategies) {
         this.strategies = strategies;
     }

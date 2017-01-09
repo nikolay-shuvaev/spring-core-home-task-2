@@ -54,7 +54,7 @@ public class DiscountServiceTest extends TestCase {
     }
 
     @Test
-    public void testGetSoldTiketDiscount() {
+    public void testGetSoldTicketDiscount() {
         int discount = discountService.getDiscount(testUser, testEvent, LocalDateTime.of(2017, 1, 1, 0,0), 10);
         assertEquals(5, discount);
     }

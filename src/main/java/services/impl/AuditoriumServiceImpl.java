@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import services.AuditoriumService;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -20,13 +21,18 @@ import java.util.Set;
 public class AuditoriumServiceImpl implements AuditoriumService {
     private ScheduleTableDao scheduleTableDao;
     private OccupiedSeatsDao occupiedSeatsDao;
+
     private List<Auditorium> auditoriumList;
 
     @Autowired
-    public AuditoriumServiceImpl(ScheduleTableDao scheduleTableDao, OccupiedSeatsDao occupiedSeatsDao/*, List<Auditorium> auditoriumList*/) {
+    public AuditoriumServiceImpl(ScheduleTableDao scheduleTableDao, OccupiedSeatsDao occupiedSeatsDao) {
         this.scheduleTableDao = scheduleTableDao;
         this.occupiedSeatsDao = occupiedSeatsDao;
-        this.auditoriumList = null;//auditoriumList;
+    }
+
+    @Resource(name = "auditoriumList")
+    public void setAuditoriumList(List<Auditorium> auditoriumList) {
+        this.auditoriumList = auditoriumList;
     }
 
     @Override
