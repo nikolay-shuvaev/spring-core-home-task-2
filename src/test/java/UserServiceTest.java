@@ -1,3 +1,4 @@
+import configuration.AppConfig;
 import entities.User;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -16,7 +17,7 @@ import java.time.LocalDate;
  * Created by macbook on 04.01.17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:services-beans.xml")
+@ContextConfiguration(classes = AppConfig.class)
 public class UserServiceTest extends TestCase {
     private static final String TEST_USER_1 = "Test User 1";
     private static final String TEST_EMAIL = "test1@test.com";

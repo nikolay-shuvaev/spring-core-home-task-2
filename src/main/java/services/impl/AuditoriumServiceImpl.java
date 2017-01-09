@@ -6,6 +6,7 @@ import entities.Auditorium;
 import entities.Event;
 import entities.Seat;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import services.AuditoriumService;
 
 import java.time.LocalDateTime;
@@ -15,16 +16,17 @@ import java.util.Set;
 /**
  * Created by macbook on 02.01.17.
  */
+@Service
 public class AuditoriumServiceImpl implements AuditoriumService {
     private ScheduleTableDao scheduleTableDao;
     private OccupiedSeatsDao occupiedSeatsDao;
     private List<Auditorium> auditoriumList;
 
     @Autowired
-    public AuditoriumServiceImpl(ScheduleTableDao scheduleTableDao, OccupiedSeatsDao occupiedSeatsDao, List<Auditorium> auditoriumList) {
+    public AuditoriumServiceImpl(ScheduleTableDao scheduleTableDao, OccupiedSeatsDao occupiedSeatsDao/*, List<Auditorium> auditoriumList*/) {
         this.scheduleTableDao = scheduleTableDao;
         this.occupiedSeatsDao = occupiedSeatsDao;
-        this.auditoriumList = auditoriumList;
+        this.auditoriumList = null;//auditoriumList;
     }
 
     @Override

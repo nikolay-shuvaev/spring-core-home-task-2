@@ -1,3 +1,4 @@
+import configuration.AppConfig;
 import entities.*;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -23,7 +24,7 @@ import static entities.SeatType.*;
  * Created by NICK on 05.01.2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:services-beans.xml")
+@ContextConfiguration(classes = AppConfig.class)
 public class BookingServiceTest extends TestCase {
     private static final String TEST_AUDITORIUM = "Center Name 4";
     private static final LocalDateTime EVENT_DATE_TIME = LocalDateTime.of(2017, 2, 2, 13, 0);

@@ -2,6 +2,7 @@ package services.impl;
 
 import entities.Event;
 import entities.User;
+import org.springframework.stereotype.Service;
 import services.DiscountService;
 import services.strategies.DiscountStrategy;
 
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by macbook on 02.01.17.
  */
+@Service
 public class DiscountServiceImpl implements DiscountService {
     private List<DiscountStrategy> strategies;
 

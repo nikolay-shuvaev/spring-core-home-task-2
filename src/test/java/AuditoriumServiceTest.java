@@ -1,3 +1,4 @@
+import configuration.AppConfig;
 import entities.Auditorium;
 import entities.Event;
 import entities.Rating;
@@ -17,7 +18,7 @@ import java.util.List;
  * Created by NICK on 05.01.2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:services-beans.xml")
+@ContextConfiguration(classes = AppConfig.class)
 public class AuditoriumServiceTest extends TestCase {
     public static final String TEST_EVENT_NAME = "Test Event";
     public static final String TEST_AUDITORIUM_NAME = "Center Name 1";

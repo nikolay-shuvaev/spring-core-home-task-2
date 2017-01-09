@@ -4,6 +4,7 @@ import dao.UserDao;
 import entities.Ticket;
 import entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import services.UserService;
 
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ import java.util.List;
 /**
  * Created by macbook on 02.01.17.
  */
+@Service
 public class UserServiceImpl implements UserService {
     private final UserDao userDao;
 

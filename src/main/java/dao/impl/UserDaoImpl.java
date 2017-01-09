@@ -3,6 +3,7 @@ package dao.impl;
 import dao.UserDao;
 import entities.Ticket;
 import entities.User;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.util.*;
@@ -11,6 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Created by macbook on 03.01.17.
  */
+@Repository
 public class UserDaoImpl implements UserDao {
     private long currentId = 1;
     private Map<Long, User> users = new HashMap<>();

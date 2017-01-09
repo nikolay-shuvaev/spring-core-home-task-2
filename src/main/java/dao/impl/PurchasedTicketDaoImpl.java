@@ -3,6 +3,7 @@ package dao.impl;
 import dao.PurchasedTicketDao;
 import entities.Event;
 import entities.Ticket;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import java.util.Map;
 /**
  * Created by NICK on 06.01.2017.
  */
+@Repository
 public class PurchasedTicketDaoImpl implements PurchasedTicketDao {
     private Map<String, List<Ticket>> purchasedTickets = new HashMap<>();
     @Override

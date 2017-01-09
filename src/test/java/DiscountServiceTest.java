@@ -1,3 +1,4 @@
+import configuration.AppConfig;
 import entities.Event;
 import entities.Rating;
 import entities.User;
@@ -19,7 +20,7 @@ import java.time.LocalDateTime;
  * Created by NICK on 05.01.2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:services-beans.xml")
+@ContextConfiguration(classes = AppConfig.class)
 public class DiscountServiceTest extends TestCase {
     @Autowired
     private DiscountService discountService;

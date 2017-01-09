@@ -3,6 +3,7 @@ package dao.impl;
 import dao.ScheduleTableDao;
 import entities.Auditorium;
 import entities.Event;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
@@ -11,6 +12,7 @@ import java.util.Map;
 /**
  * Created by NICK on 05.01.2017.
  */
+@Repository
 public class ScheduleTableDaoImpl implements ScheduleTableDao {
     private Map<String, Auditorium> scheduleTable = new HashMap<>();
 

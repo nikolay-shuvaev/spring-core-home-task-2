@@ -1,3 +1,4 @@
+import configuration.AppConfig;
 import entities.Event;
 import entities.Rating;
 import junit.framework.TestCase;
@@ -14,7 +15,7 @@ import java.time.LocalDate;
  * Created by macbook on 04.01.17.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "classpath:services-beans.xml")
+@ContextConfiguration(classes = AppConfig.class)
 public class EventServiceTest extends TestCase {
     private static final String TEST_EVENT_1 = "Test Event 1";
     private static final String TEST_EVENT_2 = "Test Event 2";

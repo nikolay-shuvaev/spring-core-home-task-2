@@ -3,6 +3,7 @@ package services.impl;
 import dao.PurchasedTicketDao;
 import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import services.AuditoriumService;
 import services.BookingService;
 import services.DiscountService;
@@ -14,6 +15,7 @@ import java.util.*;
 /**
  * Created by macbook on 02.01.17.
  */
+@Service
 public class BookingServiceImpl implements BookingService {
     private final DiscountService discountService;
     private final AuditoriumService auditoriumService;
@@ -27,15 +29,15 @@ public class BookingServiceImpl implements BookingService {
     public BookingServiceImpl(DiscountService discountService,
                               AuditoriumService auditoriumService,
                               UserService userService,
-                              PurchasedTicketDao purchasedTicketDao,
+                              PurchasedTicketDao purchasedTicketDao/*,
                               Map<Rating, Double> multiplierByRating,
-                              Map<SeatType, Double> multiplierBySeatType) {
+                              Map<SeatType, Double> multiplierBySeatType*/) {
         this.discountService = discountService;
         this.auditoriumService = auditoriumService;
         this.userService = userService;
         this.purchasedTicketDao = purchasedTicketDao;
-        this.multiplierByRating = multiplierByRating;
-        this.multiplierBySeatType = multiplierBySeatType;
+        this.multiplierByRating = null;//multiplierByRating;
+        this.multiplierBySeatType = null;//multiplierBySeatType;
     }
 
     @Override
