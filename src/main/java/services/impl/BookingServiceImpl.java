@@ -9,6 +9,7 @@ import services.BookingService;
 import services.DiscountService;
 import services.UserService;
 
+import javax.annotation.Resource;
 import java.time.LocalDateTime;
 import java.util.*;
 
@@ -29,15 +30,11 @@ public class BookingServiceImpl implements BookingService {
     public BookingServiceImpl(DiscountService discountService,
                               AuditoriumService auditoriumService,
                               UserService userService,
-                              PurchasedTicketDao purchasedTicketDao/*,
-                              Map<Rating, Double> multiplierByRating,
-                              Map<SeatType, Double> multiplierBySeatType*/) {
+                              PurchasedTicketDao purchasedTicketDao) {
         this.discountService = discountService;
         this.auditoriumService = auditoriumService;
         this.userService = userService;
         this.purchasedTicketDao = purchasedTicketDao;
-        this.multiplierByRating = null;//multiplierByRating;
-        this.multiplierBySeatType = null;//multiplierBySeatType;
     }
 
     @Override
@@ -141,4 +138,13 @@ public class BookingServiceImpl implements BookingService {
         }
     }
 
+    @Resource
+    public void setMultiplierByRating(Map<Rating, Double> multiplierByRating) {
+        this.multiplierByRating = multiplierByRating;
+    }
+
+    @Resource
+    public void setMultiplierBySeatType(Map<SeatType, Double> multiplierBySeatType) {
+        this.multiplierBySeatType = multiplierBySeatType;
+    }
 }
