@@ -18,10 +18,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-import static entities.SeatType.*;
+import static entities.SeatType.STANDARD;
+import static entities.SeatType.VIP;
 
 /**
- * Created by NICK on 05.01.2017.
+ * Created by NICK on 05.01.2017
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)

@@ -1,20 +1,18 @@
 package configuration;
 
-import dao.OccupiedSeatsDao;
-import dao.ScheduleTableDao;
-import entities.Auditorium;
 import entities.Rating;
 import entities.SeatType;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.*;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import services.AuditoriumService;
-import services.impl.AuditoriumServiceImpl;
 import services.strategies.BirthdayDiscountStrategy;
 import services.strategies.DiscountStrategy;
 import services.strategies.SoldTicketDiscountStrategy;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Nikolai_Shuvaev on 1/9/2017

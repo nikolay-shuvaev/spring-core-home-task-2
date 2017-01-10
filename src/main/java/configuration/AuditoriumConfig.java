@@ -1,11 +1,9 @@
 package configuration;
 
 import entities.Auditorium;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 
 import java.util.Arrays;
@@ -14,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Created by NICK on 10.01.2017.
+ * Created by NICK on 10.01.2017
  */
 @Configuration
 @PropertySource(value = {"classpath:auditoriums/auditoriums-center.properties", "classpath:auditoriums/auditoriums-east.properties"})

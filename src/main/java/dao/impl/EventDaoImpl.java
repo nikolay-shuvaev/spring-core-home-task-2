@@ -3,7 +3,6 @@ package dao.impl;
 import dao.EventDao;
 import entities.Event;
 import entities.Rating;
-import entities.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by macbook on 03.01.17.
+ * Created by macbook on 03.01.17
  */
 @Repository
 public class EventDaoImpl implements EventDao {

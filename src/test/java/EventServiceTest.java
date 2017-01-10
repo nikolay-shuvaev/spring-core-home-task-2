@@ -9,10 +9,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import services.EventService;
 
-import java.time.LocalDate;
-
 /**
- * Created by macbook on 04.01.17.
+ * Created by macbook on 04.01.17
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
