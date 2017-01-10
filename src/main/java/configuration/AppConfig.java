@@ -17,20 +17,33 @@ import services.strategies.SoldTicketDiscountStrategy;
 import java.util.*;
 
 /**
- * Created by Nikolai_Shuvaev on 1/9/2017.
+ * Created by Nikolai_Shuvaev on 1/9/2017
  */
 @Configuration
 @ComponentScan({"dao", "services"})
+@PropertySource(value = "classpath:discount.properties")
 @Import(AuditoriumConfig.class)
 public class AppConfig {
+    @Value("${birthday.discount.value}")
+    private Integer birthdayDiscountValue;
+
+    @Value("${birthday.discount.days}")
+    private Integer birthdayDiscountDays;
+
+    @Value("${sold.ticket.discount.value}")
+    private Integer soldTicketDiscountValue;
+
+    @Value("${sold.ticket.discount.ticket.number}")
+    private Integer soldTicketDiscountTicketNumber;
+
     @Bean
     public BirthdayDiscountStrategy birthdayDiscountStrategy() {
-        return new BirthdayDiscountStrategy(10, 5);
+        return new BirthdayDiscountStrategy(birthdayDiscountValue, birthdayDiscountDays);
     }
 
     @Bean
     public SoldTicketDiscountStrategy soldTicketDiscountStrategy() {
-        return new SoldTicketDiscountStrategy(50, 10);
+        return new SoldTicketDiscountStrategy(soldTicketDiscountValue, soldTicketDiscountTicketNumber);
     }
 
     @Bean
@@ -55,4 +68,8 @@ public class AppConfig {
         return bean;
     }
 
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }
