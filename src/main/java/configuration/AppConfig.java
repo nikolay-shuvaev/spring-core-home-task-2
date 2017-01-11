@@ -20,6 +20,7 @@ import java.util.Map;
 @Configuration
 @ComponentScan({"dao", "services"})
 @PropertySource(value = "classpath:discount.properties")
+@EnableAspectJAutoProxy
 @Import(AuditoriumConfig.class)
 public class AppConfig {
     @Value("${birthday.discount.value}")
