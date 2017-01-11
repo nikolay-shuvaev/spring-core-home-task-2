@@ -20,6 +20,7 @@ import java.util.Objects;
  * Created by Nikolai_Shuvaev on 1/11/2017
  */
 @Aspect
+@Component
 public class CounterAspect {
 
     private static Map<Long, StatisticEntry> counters = new HashMap<>();

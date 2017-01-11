@@ -25,8 +25,6 @@ import java.util.Map;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
-@EnableAspectJAutoProxy
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class StatisticAspectTest extends TestCase {
     private static final String TEST_EVENT_1 = "Test Event 1";
     private static final String TEST_EVENT_2 = "Test Event 2";

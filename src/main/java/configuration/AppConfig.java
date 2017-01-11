@@ -37,12 +37,12 @@ public class AppConfig {
     private Integer soldTicketDiscountTicketNumber;
 
     @Bean
-    public BirthdayDiscountStrategy birthdayDiscountStrategy() {
+    public DiscountStrategy birthdayDiscountStrategy() {
         return new BirthdayDiscountStrategy(birthdayDiscountValue, birthdayDiscountDays);
     }
 
     @Bean
-    public SoldTicketDiscountStrategy soldTicketDiscountStrategy() {
+    public DiscountStrategy soldTicketDiscountStrategy() {
         return new SoldTicketDiscountStrategy(soldTicketDiscountValue, soldTicketDiscountTicketNumber);
     }
 
@@ -66,11 +66,6 @@ public class AppConfig {
         bean.put(SeatType.STANDARD, 1.);
         bean.put(SeatType.VIP, 2.);
         return bean;
-    }
-
-    @Bean
-    public CounterAspect aspect() {
-        return new CounterAspect();
     }
 
     @Bean

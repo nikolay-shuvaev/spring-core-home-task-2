@@ -16,7 +16,7 @@ public abstract class DiscountStrategyBase implements DiscountStrategy {
     }
 
     public int getDiscount(User user, Event event, LocalDateTime dateTime, int numberOfTickets) {
-        return isApplyDiscount(user, event, dateTime, numberOfTickets) ? calculateDiscount(user, event, dateTime, numberOfTickets) : 0;
+        return isApplyDiscount(user, event, dateTime, numberOfTickets) ? calculateDiscount(user, event, dateTime, numberOfTickets) : -1;
     }
 
     public abstract boolean isApplyDiscount(User user, Event event, LocalDateTime dateTime, int numberOfTickets);
