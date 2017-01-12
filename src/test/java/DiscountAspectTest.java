@@ -49,16 +49,20 @@ public class DiscountAspectTest extends TestCase {
     }
     @Test
     public void testTotalDiscountCount() {
-        discountService.getDiscount(testUser, testEvent, BIRTHDAY.plusDays(1).atStartOfDay(), 3);
-        discountService.getDiscount(testUser, testEvent, BIRTHDAY.plusDays(1).atStartOfDay(), 3);
-        discountService.getDiscount(testUser, testEvent, BIRTHDAY.plusDays(1).atStartOfDay(), 3);
+        discountService.getDiscount(testUser, testEvent, BIRTHDAY.minusDays(1).atStartOfDay(), 3);
+        discountService.getDiscount(testUser, testEvent, BIRTHDAY.minusDays(1).atStartOfDay(), 3);
+        discountService.getDiscount(testUser, testEvent, BIRTHDAY.minusDays(1).atStartOfDay(), 3);
 
-        discountService.getDiscount(testUser, testEvent,  BIRTHDAY.plusDays(10).atStartOfDay(), 13);
-        discountService.getDiscount(testUser, testEvent,  BIRTHDAY.plusDays(10).atStartOfDay(), 13);
-        discountService.getDiscount(testUser, testEvent,  BIRTHDAY.plusDays(10).atStartOfDay(), 13);
+        discountService.getDiscount(testUser, testEvent,  BIRTHDAY.minusDays(10).atStartOfDay(), 13);
+        discountService.getDiscount(null, testEvent,  BIRTHDAY.minusDays(10).atStartOfDay(), 13);
+        discountService.getDiscount(null, testEvent,  BIRTHDAY.minusDays(10).atStartOfDay(), 13);
 
         Map<Class, Long> totalDiscountApplyCounter = discountAspect.getTotalDiscountApplyCounter();
-        assertEquals(Long.valueOf(3L), totalDiscountApplyCounter.get(BirthdayDiscountStrategy.class));
-        assertEquals(Long.valueOf(3L), totalDiscountApplyCounter.get(SoldTicketDiscountStrategy.class));
+        assertEquals(Long.valueOf(3), totalDiscountApplyCounter.get(BirthdayDiscountStrategy.class));
+        assertEquals(Long.valueOf(3), totalDiscountApplyCounter.get(SoldTicketDiscountStrategy.class));
+
+        Map<Class, Map<User, Long>> particularUserCount = discountAspect.getParticularUserCount();
+        assertEquals(Long.valueOf(3), particularUserCount.get(BirthdayDiscountStrategy.class).get(testUser));
+        assertEquals(Long.valueOf(1), particularUserCount.get(SoldTicketDiscountStrategy.class).get(testUser));
     }
 }

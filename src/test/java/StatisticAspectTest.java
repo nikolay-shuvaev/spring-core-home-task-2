@@ -1,4 +1,5 @@
 import aspects.CounterAspect;
+import entities.StatisticEntry;
 import configuration.AppConfig;
 import entities.*;
 import junit.framework.TestCase;
@@ -6,8 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.EnableAspectJAutoProxy;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import services.AuditoriumService;

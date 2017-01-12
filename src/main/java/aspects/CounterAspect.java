@@ -3,18 +3,14 @@ package aspects;
 import entities.Event;
 import entities.StatisticEntry;
 import entities.Ticket;
-import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 /**
  * Created by Nikolai_Shuvaev on 1/11/2017
@@ -39,17 +35,6 @@ public class CounterAspect {
     public void eventBooking() {
 
     }
-
- /*   @Pointcut("execution(* services..*(..))")
-    public void printAll() {
-
-    }
-
-    @Before("printAll()")
-    public void print(JoinPoint joinPoint){
-        System.out.println("Hello - " + joinPoint.getTarget());
-    }*/
-
 
     @AfterReturning(pointcut = "eventNameAccess()",
                     returning = "event")
