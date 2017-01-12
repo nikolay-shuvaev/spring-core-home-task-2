@@ -1,5 +1,6 @@
 import aspects.DiscountAspect;
 import configuration.AppConfig;
+import configuration.AspectConfiguration;
 import entities.Event;
 import entities.Rating;
 import entities.User;
@@ -17,14 +18,13 @@ import services.strategies.BirthdayDiscountStrategy;
 import services.strategies.SoldTicketDiscountStrategy;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Map;
 
 /**
  * Created by NICK on 12.01.2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
+@ContextConfiguration(classes = {AppConfig.class, AspectConfiguration.class})
 public class DiscountAspectTest extends TestCase {
     private static final LocalDate BIRTHDAY = LocalDate.of(2000, 11, 13);
     @Autowired

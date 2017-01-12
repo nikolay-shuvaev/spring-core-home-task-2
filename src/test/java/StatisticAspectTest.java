@@ -1,6 +1,6 @@
 import aspects.CounterAspect;
-import entities.StatisticEntry;
 import configuration.AppConfig;
+import configuration.AspectConfiguration;
 import entities.*;
 import junit.framework.TestCase;
 import org.junit.Before;
@@ -23,7 +23,7 @@ import java.util.Map;
  * Created by Nikolai_Shuvaev on 1/11/2017.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = AppConfig.class)
+@ContextConfiguration(classes = {AppConfig.class, AspectConfiguration.class})
 public class StatisticAspectTest extends TestCase {
     private static final String TEST_EVENT_1 = "Test Event 1";
     private static final String TEST_EVENT_2 = "Test Event 2";

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public abstract class DiscountStrategyBase implements DiscountStrategy {
     private int discountValue;
 
-    private DiscountStrategyBase(int discountValue) {
+    DiscountStrategyBase(int discountValue) {
         this.discountValue = discountValue;
     }
 

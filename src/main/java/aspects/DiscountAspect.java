@@ -30,25 +30,33 @@ public class DiscountAspect {
 
     }
 
-    @AfterReturning(pointcut = "discountStrategies() && applyDiscount() && args(user, ..)",
-                    returning = "discount")
-    public void countTotalAppliedStrategies(JoinPoint joinPoint, User user, Integer discount) {
+    @AfterReturning(pointcut = "discountStrategies() && applyDiscount()",
+            returning = "discount")
+    public void countTotalAppliedStrategies(JoinPoint joinPoint, Integer discount) {
         if (discount > 0) {
             Class clazz = joinPoint.getTarget().getClass();
             increaseCount(clazz, totalDiscountApplyCounter);
-            updateUserCountInformation(clazz, user);
+        }
+    }
+
+    @AfterReturning(pointcut = "discountStrategies() && applyDiscount() && args(user, ..)",
+            returning = "discount")
+    public void countStrategiesAppliedToUser(JoinPoint joinPoint, User user, Integer discount) {
+        if (discount > 0) {
+            Class clazz = joinPoint.getTarget().getClass();
+            if (user != null) {
+                updateUserCountInformation(clazz, user);
+            }
         }
     }
 
     private void updateUserCountInformation(Class clazz, User user) {
-        if (user != null) {
-            Map<User, Long> userCount = particularUserCount.get(clazz);
-            if (userCount == null) {
-                userCount = new HashMap<>();
-                particularUserCount.put(clazz, userCount);
-            }
-            increaseCount(user, userCount);
+        Map<User, Long> userCount = particularUserCount.get(clazz);
+        if (userCount == null) {
+            userCount = new HashMap<>();
+            particularUserCount.put(clazz, userCount);
         }
+        increaseCount(user, userCount);
     }
 
     public Map<Class, Long> getTotalDiscountApplyCounter() {
@@ -61,7 +69,7 @@ public class DiscountAspect {
 
     private static <T> void increaseCount(T t, Map<T, Long> map) {
         Long count = map.get(t);
-        count = count != null ? count + 1 : 1L;
+        count = (count != null) ? count + 1 : 1L;
         map.put(t, count);
     }
 }

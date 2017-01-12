@@ -1,6 +1,5 @@
 package configuration;
 
-import aspects.CounterAspect;
 import entities.Rating;
 import entities.SeatType;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,7 +18,7 @@ import java.util.Map;
  * Created by Nikolai_Shuvaev on 1/9/2017
  */
 @Configuration
-@ComponentScan({"dao", "services", "aspects"})
+@ComponentScan({"dao", "services"})
 @PropertySource(value = "classpath:discount.properties")
 @EnableAspectJAutoProxy
 @Import(AuditoriumConfig.class)
