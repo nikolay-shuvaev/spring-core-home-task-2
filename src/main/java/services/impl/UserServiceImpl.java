@@ -11,7 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 /**
- * Created by macbook on 02.01.17.
+ * Created by macbook on 02.01.17
  */
 @Service
 public class UserServiceImpl implements UserService {

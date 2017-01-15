@@ -21,17 +21,22 @@ public class CounterAspect {
 
     private static Map<Long, StatisticEntry> counters = new HashMap<>();
 
+    @Pointcut("within(services.BookingService+)")
+    public void bookingService() {
+
+    }
+
     @Pointcut("execution(* services.EventService.getEventByName(..))")
     public void eventNameAccess() {
 
     }
 
-    @Pointcut("execution(* services.BookingService.getTotalPrice(..))")
+    @Pointcut("execution(* *.getTotalPrice(..))")
     public void eventPriceAccess() {
 
     }
 
-    @Pointcut("execution(* services.BookingService.bookTicket(..))")
+    @Pointcut("execution(* *.bookTicket(..))")
     public void eventBooking() {
 
     }
@@ -44,14 +49,14 @@ public class CounterAspect {
         statisticEntry.setAccessedByNameCount(++priceQueriedCount);
     }
 
-    @AfterReturning("eventPriceAccess() && args(event, ..)")
+    @AfterReturning("bookingService() && eventPriceAccess() && args(event, ..)")
     public void countEventPriceAccess(Event event) {
         StatisticEntry statisticEntry = getStatisticEntry(event);
         Long priceQueriedCount = statisticEntry.getPriceQueriedCount();
         statisticEntry.setPriceQueriedCount(++priceQueriedCount);
     }
 
-    @AfterReturning("eventBooking() && args(tickets, ..)")
+    @AfterReturning("bookingService() && eventBooking() && args(tickets, ..)")
     public void countEventBooking(List<Ticket> tickets) {
         for (Ticket ticket : tickets) {
             StatisticEntry statisticEntry = getStatisticEntry(ticket.getEvent());

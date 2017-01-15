@@ -6,7 +6,7 @@ import services.LotteryService;
 import java.util.Random;
 
 /**
- * Created by NICK on 12.01.2017.
+ * Created by NICK on 12.01.2017
  */
 @Service
 public class LotteryServiceImpl implements LotteryService {

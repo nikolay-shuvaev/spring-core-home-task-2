@@ -29,11 +29,9 @@ public class LuckyWinnerAspect {
 
     @Around("bookingService() && getTotalPrice() && args(.. , user, *)")
     public double performLuckyCheck(ProceedingJoinPoint joinPoint, User user) throws Throwable {
-        if (user != null) {
-            if (lotteryService.isYouLucky()) {
-                System.out.println("Lucky user is " + user);
-                return 0;
-            }
+        if (user != null && lotteryService.isYouLucky()) {
+            System.out.println("Lucky user is " + user);
+            return 0.;
         }
         return (double) joinPoint.proceed();
     }

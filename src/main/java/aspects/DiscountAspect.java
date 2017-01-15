@@ -20,12 +20,12 @@ public class DiscountAspect {
     private Map<Class, Map<User, Long>> particularUserCount = new HashMap<>();
 
 
-    @Pointcut("execution(* services.strategies.DiscountStrategy.*(..))")
+    @Pointcut("within(services.strategies.DiscountStrategy+)")
     public void discountStrategies() {
 
     }
 
-    @Pointcut("execution(* *+.getDiscount(..))")
+    @Pointcut("execution(* *.getDiscount(..))")
     public void applyDiscount() {
 
     }
@@ -42,11 +42,9 @@ public class DiscountAspect {
     @AfterReturning(pointcut = "discountStrategies() && applyDiscount() && args(user, ..)",
             returning = "discount")
     public void countStrategiesAppliedToUser(JoinPoint joinPoint, User user, Integer discount) {
-        if (discount > 0) {
+        if (discount > 0 && user != null) {
             Class clazz = joinPoint.getTarget().getClass();
-            if (user != null) {
-                updateUserCountInformation(clazz, user);
-            }
+            updateUserCountInformation(clazz, user);
         }
     }
 
